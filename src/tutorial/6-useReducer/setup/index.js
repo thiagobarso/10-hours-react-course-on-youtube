@@ -2,31 +2,8 @@ import React, { useState, useReducer } from 'react'
 import Modal from './Modal'
 import { data } from '../../../data'
 // reducer function
-const reducer = (state, action) => {
-  if (action.type === 'ADD_ITEM') {
-    const newPeople = [...state.people, action.payload]
-    return {
-      ...state,
-      people: newPeople,
-      isModalOpen: true,
-      modalContent: 'item added',
-    }
-  }
-  if (action.type === 'NO_VALUE') {
-    return { ...state, isModalOpen: true, modalContent: 'please entre value' }
-  }
-  if (action.type === 'CLOSE_MODAL') {
-    return { ...state, isModalOpen: false }
-  }
-  if (action.type === 'REMOVE_ITEM') {
-    const newPeople = state.people.filter(
-      (person) => person.id !== action.payload
-    )
-    return { ...state, people: newPeople }
-  }
+import { reducer } from './reducer'
 
-  throw new Error('no matching action type')
-}
 const defaultState = {
   people: [],
   isModalOpen: false,
